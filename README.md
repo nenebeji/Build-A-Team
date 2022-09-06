@@ -1,4 +1,4 @@
-# TITLE
+# Build A Team
 
 ## Table of Contents
 - [Project Description](#project-description)
