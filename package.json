@@ -1,0 +1,27 @@
+{
+  "name": "build-a-team",
+  "version": "1.0.0",
+  "description": "## Table of Contents - [Project Description](#project-description)   - [Problems Solved](#problems-solved) - [Installation](#installation) - [Usage](#usage) - [How to Contribute](#how-to-contribute) - [Tests](#test) - [Questions](#questions) - [References](#references) - [License](#license)",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nenebeji/Build-A-Team.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nenebeji/Build-A-Team/issues"
+  },
+  "homepage": "https://github.com/nenebeji/Build-A-Team#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "jest": "^29.0.2"
+  }
+}
