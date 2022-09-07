@@ -1,0 +1,57 @@
+body {
+    font-family: 'PT-Sans', sans-serif;
+    line-height: 1;
+}
+
+.header {
+    text-align: center;
+    background-color: #1F2833;
+    color: #66FCf1;
+}
+
+h1 {
+    font-weight: 700;
+    padding: 4% 0;
+}
+
+.card {
+    /* width: 300px; */
+    height: 450px;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+/* Card container */
+.card-container {
+    margin: 10%;
+    justify-content: center;
+}
+
+/* Card header */
+.manager-head {
+    background-color: #66FCf1;
+    padding: 4%;
+}
+
+.engineer-head {
+    background-color: #fccd04;
+    padding: 4%;
+}
+
+.intern-head {
+    background-color: #a64ac9;
+    padding: 4%;
+}
+
+h5 {
+    padding: 3% 0;
+    font-size: 2rem;
+}
+
+ul {
+    margin: 10% 5% 0 5%;
+}
+
+li {
+    font-size: 1.2rem;
+    padding: 10%;
+}
