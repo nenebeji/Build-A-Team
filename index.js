@@ -167,7 +167,7 @@ const ResetQs = async () => {
 ResetQs();
 
 const BuildTeam = () => {
-    const htmlpage = generateTeam(StaffData);
+    const htmlpage = pagetemplate(StaffData);
 
     // Write html file
     fs.writeFile ('./dist/index.html', htmlpage, (err) =>
