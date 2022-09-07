@@ -22,7 +22,8 @@ h1 {
 
 /* Card container */
 .card-container {
-    margin: 10%;
+    margin: 5%;
+    padding: 5%;
     justify-content: center;
 }
 
