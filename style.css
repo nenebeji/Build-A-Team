@@ -48,10 +48,26 @@ h5 {
 }
 
 ul {
-    margin: 10% 5% 0 5%;
+    border: solid #E5E4E2;
+    margin: 7% 5% 0 5%;
+    list-style-type: none;
 }
 
 li {
-    font-size: 1.2rem;
-    padding: 10%;
+    font-size: 1.1rem;
+    padding: 5% 0;
+    border: solid #E5E4E2;
+    border-width: 0.2px;
+}
+
+.fw-bold {
+    padding: 2% 0;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
 }
