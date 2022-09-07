@@ -1,6 +1,6 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const pagetemplate = require('./src/pagetemplate');
+const generatepage = require('./src/pagetemplate');
 
 //lib folder
 const Engineer = require('./lib/Engineer');
@@ -167,7 +167,7 @@ const ResetQs = async () => {
 ResetQs();
 
 const BuildTeam = () => {
-    const htmlpage = pagetemplate(StaffData);
+    const htmlpage = generatepage(StaffData);
 
     // Write html file
     fs.writeFile ('./dist/index.html', htmlpage, (err) =>
