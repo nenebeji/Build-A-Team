@@ -169,7 +169,7 @@ const BuildTeam = () => {
     const htmlpage = generateTeam(StaffData);
 
     // Write html file
-    fs.writeFile ('./dist/index.html', readme, (err) =>
+    fs.writeFile ('./dist/index.html', htmlpage, (err) =>
     err ? console.error(err) : console.log('Hurray! You have successfully created a the DREAM TEAM!'));
     };
 }
