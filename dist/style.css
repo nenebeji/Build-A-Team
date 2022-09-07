@@ -48,6 +48,7 @@ h5 {
     font-size: 2rem;
 }
 
+/* List styling */
 ul {
     border: solid #E5E4E2;
     margin: 7% 5% 0 5%;
@@ -65,6 +66,12 @@ li {
     padding: 2% 0;
 }
 
+/* Link styling */
+a {
+    text-decoration: none;
+}
+
+/* Hide and Show class */
 .hide {
     display: none;
 }
