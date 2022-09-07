@@ -2,69 +2,61 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const pagetemplate = require('./src/pagetemplate');
 
+//lib folder
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
+
 // Questions for user input
 
 const questions = [ 
     {
     type: 'input',
-    message: `What is the team Manager's name?`,
-    name: 'managerName',
+    message: `What is the Employee's name?`,
+    name: 'name',
     // default: '',
-    validate: managerNameinput => {
-      if (managerNameinput) return true;
+    validate: nameinput => {
+      if (nameinput) return true;
       else 
-      {console.log(`Please enter the team manager's name`)
+      {console.log(`Please enter the Employee's name`)
        return false;
       }
     },
   },
   {
     type: 'input',
-    message: `What is the team Manager's Employee ID?`,
-    name: 'managerID',
+    message: `What is the Employee's ID?`,
+    name: 'ID',
     // default: '',
-    validate: managerIDinput => {
-      if (managerIDinput) return true;
+    validate: IDinput => {
+      if (IDinput) return true;
       else 
-      {console.log(`Please enter the team manager's Employee ID`)
+      {console.log(`Please enter the Employee's ID`)
        return false;
       }
     },
   },
   {
     type: 'input',
-    message: `What is the team Manager's email address`,
-    name: 'managerEmail',
+    message: `What is the Employee's email address`,
+    name: 'email',
     // default: '',
-    validate: managerEmailinput => {
-      if (managerEmailinput) return true;
+    validate: emailinput => {
+      if (emailinput) return true;
       else 
-      {console.log(`Please enter the team manager's email address`)
-       return false;
-      }
-    },
-  },
-  {
-    type: 'input',
-    message: `What is the team Manager's office number?`,
-    name: 'officeNumber',
-    // default: '',
-    validate: officeNumberinput => {
-      if (officeNumberinput) return true;
-      else 
-      {console.log(`Please enter the team manager's office number`)
+      {console.log(`Please enter the employees's email address`)
        return false;
       }
     },
   },
   {
     type: 'list',
-    message: `Please select an employee to complete your team`,
+    message: `What is their role on the team?`,
     name: 'role',
     choices: [
         'Engineer',
         'Intern',
-        'None'
+        'Manager'
     ],
     // default: '',
     validate: roleinput => {
@@ -80,45 +72,6 @@ const questions = [
 // Engineer Questions function
 const EngQs = () => {
     inquirer.prompt([
-        {
-            type: 'input',
-            message: `What is the Engineer's name?`,
-            name: 'engineerName',
-            // default: '',
-            validate: engineerNameinput => {
-              if (engineerNameinput) return true;
-              else 
-              {console.log(`Please enter the engineer's name`)
-               return false;
-              }
-            },
-        },
-        {
-            type: 'input',
-            message: `What is the Engineer's ID?`,
-            name: 'engineerID',
-            // default: '',
-            validate: engineerIDinput => {
-              if (engineerIDinput) return true;
-              else 
-              {console.log(`Please enter the engineer's ID`)
-               return false;
-              }
-            },
-        },
-        {
-            type: 'input',
-            message: `What is the Engineer's email address?`,
-            name: 'engineerEmail',
-            // default: '',
-            validate: engineerEmailinput => {
-              if (engineerEmailinput) return true;
-              else 
-              {console.log(`Please enter the engineer's email address`)
-               return false;
-              }
-            },
-        },
         {
             type: 'input',
             message: `What is the Engineer's GitHub username?`,
@@ -141,45 +94,6 @@ const IntQs = () => {
     inquirer.prompt([
         {
             type: 'input',
-            message: `What is the Intern's name?`,
-            name: 'internName',
-            // default: '',
-            validate: internNameinput => {
-              if (internNameinput) return true;
-              else 
-              {console.log(`Please enter the intern's name`)
-               return false;
-              }
-            },
-        },
-        {
-            type: 'input',
-            message: `What is the Intern's ID?`,
-            name: 'internID',
-            // default: '',
-            validate: internIDinput => {
-              if (internIDinput) return true;
-              else 
-              {console.log(`Please enter the Intern's ID`)
-               return false;
-              }
-            },
-        },
-        {
-            type: 'input',
-            message: `What is the Intern's email address?`,
-            name: 'internEmail',
-            // default: '',
-            validate: internEmailinput => {
-              if (internEmailinput) return true;
-              else 
-              {console.log(`Please enter the intern's email address`)
-               return false;
-              }
-            },
-        },
-        {
-            type: 'input',
             message: `What is the name of the Intern's school?`,
             name: 'school',
             // default: '',
@@ -195,22 +109,72 @@ const IntQs = () => {
     ])
 }
 
+// Manager Question function
+const ManQs = ()=> {
+    inquirer.prompt([
+  {
+    type: 'input',
+    message: `What is the team Manager's office number?`,
+    name: 'officeNumber',
+    // default: '',
+    validate: officeNumberinput => {
+      if (officeNumberinput) return true;
+      else 
+      {console.log(`Please enter the team manager's office number`)
+       return false;
+      }
+    },
+  },
+          
+    ])  
+}
+
+const StaffData = [];
+
 // Function to Initialize app
-function init() {inquirer.prompt(questions)
-.then((data)=> {
+function init() {
+    const firstprompt = async () => {
+    const data = await inquirer.prompt(questions)
+    // console.log(data);
     if(data.role === 'Engineer') {
         EngQs();
-        inquirer.prompt(questions[5]);
+        const newEngineer = new Engineer (data.name, data.ID, data.email, newEngineer.github);
+        StaffData.push(newEngineer);
     }
-    if(data.role === 'Intern') {
+    else if(data.role === 'Intern') {
         IntQs();
-        inquirer.prompt(questions[5]);
+        const newIntern = new Intern (data.name, data.ID, data.email, newIntern.school);
+        StaffData.push(newIntern);
     }
+    else if(data.role === 'Manager') {
+        ManQs();
+        const newManager = new Manager (data.name, data.ID, data.email, newManager.officeNumber);
+        StaffData.push(newManager);
+    }
+}
+// firstprompt();
 
-    else if(data.role === 'None') {
-        return data;
-    }
-})
+// To Reset Questions
+
+const ResetQs = async () => {
+    await firstprompt();
+    const addTeamMembers = await inquirer
+    .prompt([
+        {
+            type: 'list',
+            message: 'Would you like to add anymore Team members?',
+            name: 'addmember',
+            choices: [
+                'Yes! add another member',
+                'No! Create the A team'
+            ],
+        }
+    ])
+    if (addTeamMembers === 'Yes! add another member') return ResetQs();
+
+    // return BuildTeam();
+}
+ResetQs();
 }
 
 // Call function to initialize app
