@@ -69,66 +69,6 @@ const questions = [
   },
 ];
 
-// Engineer Questions function
-const EngQs = () => {
-    inquirer.prompt([
-        {
-            type: 'input',
-            message: `What is the Engineer's GitHub username?`,
-            name: 'github',
-            // default: '',
-            validate: githubinput => {
-              if (githubinput) return true;
-              else 
-              {console.log(`Please enter the engineer's github username`)
-               return false;
-              }
-            },
-        },
-          
-    ])
-}
-
-//Intern Questions function
-const IntQs = () => {
-    inquirer.prompt([
-        {
-            type: 'input',
-            message: `What is the name of the Intern's school?`,
-            name: 'school',
-            // default: '',
-            validate: schoolinput => {
-              if (schoolinput) return true;
-              else 
-              {console.log(`Please provide the intern's school`)
-               return false;
-              }
-            },
-        },
-          
-    ])
-}
-
-// Manager Question function
-const ManQs = ()=> {
-    inquirer.prompt([
-  {
-    type: 'input',
-    message: `What is the team Manager's office number?`,
-    name: 'officeNumber',
-    // default: '',
-    validate: officeNumberinput => {
-      if (officeNumberinput) return true;
-      else 
-      {console.log(`Please enter the team manager's office number`)
-       return false;
-      }
-    },
-  },
-          
-    ])  
-}
-
 const StaffData = [];
 
 // Function to Initialize app
@@ -137,18 +77,67 @@ function init() {
     const data = await inquirer.prompt(questions)
     // console.log(data);
     if(data.role === 'Engineer') {
-        EngQs();
-        const newEngineer = new Engineer (data.name, data.ID, data.email, newEngineer.github);
+        // Engineer Question
+        const EngQs = await inquirer
+        .prompt([
+            {
+                type: 'input',
+                message: `What is the Engineer's GitHub username?`,
+                name: 'github',
+                validate: githubinput => {
+                    if (githubinput) return true;
+                    else 
+                    {console.log(`Please enter the engineer's github username`)
+                    return false;
+                  }
+                },
+            },
+          
+        ])
+        const newEngineer = new Engineer (data.name, data.ID, data.email, EngQs.github);
         StaffData.push(newEngineer);
     }
+
     else if(data.role === 'Intern') {
-        IntQs();
-        const newIntern = new Intern (data.name, data.ID, data.email, newIntern.school);
+        // Intern Question
+        const IntQs = await inquirer
+        .prompt([
+            {
+                type: 'input',
+                message: `What is the name of the Intern's school?`,
+                name: 'school',
+                validate: schoolinput => {
+                  if (schoolinput) return true;
+                  else 
+                  {console.log(`Please provide the intern's school`)
+                   return false;
+                  }
+                },
+            },
+          
+        ])
+        const newIntern = new Intern (data.name, data.ID, data.email, IntQs.school);
         StaffData.push(newIntern);
     }
     else if(data.role === 'Manager') {
-        ManQs();
-        const newManager = new Manager (data.name, data.ID, data.email, newManager.officeNumber);
+        // Manager Questions
+        const ManQs = await inquirer
+        .prompt([
+            {
+                type: 'input',
+                message: `What is the team Manager's office number?`,
+                name: 'officeNumber',
+                validate: officeNumberinput => {
+                  if (officeNumberinput) return true;
+                  else 
+                  {console.log(`Please enter the team manager's office number`)
+                   return false;
+                  }
+                },
+              },
+          
+        ])
+        const newManager = new Manager (data.name, data.ID, data.email, ManQs.officeNumber);
         StaffData.push(newManager);
     }
 }
@@ -170,11 +159,19 @@ const ResetQs = async () => {
             ],
         }
     ])
-    if (addTeamMembers === 'Yes! add another member') return ResetQs();
+    if (addTeamMembers.addmember === 'Yes! add another member') {return ResetQs();}
 
-    // return BuildTeam();
+    return BuildTeam();
 }
 ResetQs();
+
+const BuildTeam = () => {
+    const htmlpage = generateTeam(StaffData);
+
+    // Write html file
+    fs.writeFile ('./dist/index.html', readme, (err) =>
+    err ? console.error(err) : console.log('Hurray! You have successfully created a the DREAM TEAM!'));
+    };
 }
 
 // Call function to initialize app
