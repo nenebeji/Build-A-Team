@@ -124,7 +124,7 @@ const EngQs = () => {
     ])
     .then((data) => {
         // const {name, ID, email, github, extramember} = data;
-        const engineer = new Engineer (data.name, data.id, data.email, data.github);
+        const engineer = new Engineer (data.name, data.ID, data.email, data.github);
 
         StaffData.push(engineer);
 
@@ -191,7 +191,7 @@ const IntQs = () => {
     ])
     .then((data) => {
         // const {name, ID, email, school, extramember} = data;
-        const intern = new Intern (data.name, data.id, data.email, data.school);
+        const intern = new Intern (data.name, data.ID, data.email, data.school);
 
         StaffData.push(intern);
 
@@ -239,7 +239,7 @@ const prompts = () => {
     return inquirer.prompt(questions)
     .then((data) => {
         // const {name, ID, email, officeNumber} = data;
-        const manager = new Manager (data.name, data.id, data.email, data.officeNumber);
+        const manager = new Manager (data.name, data.ID, data.email, data.officeNumber);
         // console.log(manager.getName());
         StaffData.push(manager);
         addStaff();
@@ -257,7 +257,7 @@ const BuildTeam = () => {
     const htmlpage = generateHTMLpage(StaffData);
     // Write html file
     fs.writeFile ('./dist/index.html', htmlpage, (err) =>
-    err ? console.error(err) : console.log('Hurray! You have successfully created a the DREAM TEAM!'));
+    err ? console.error(err) : console.log('Hurray! You have successfully created a the DREAM TEAM! Please Check the dist folder.'));
     };
 
 
