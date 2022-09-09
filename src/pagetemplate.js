@@ -1,5 +1,6 @@
+// Function to generate employee cards
 const generateTeam = (team) => {
-    const generateManager = (manager) => {
+    generateManager = (manager) => {
         return `
         <div class="col">
         <div class="card h-400">
@@ -30,16 +31,15 @@ const generateTeam = (team) => {
               </ul>
           </div>
         </div>
-      </div>`;
+      </div>;`
     }
-
-    const generateEngineer = (engineer) => {
+    generateEngineer = (engineer) => {
         return `
         <div class="col">
         <div class="card h-400">
           <div class="jumbotron engineer-head">
               <h5 class="card-title" id="name">${engineer.getName()}</h5>
-              <p class="lead" id="role"><i class="fa-solid fa-glasses"></i> ${engineer.getRole()}</p>
+              <p class="lead" id="role"><i class="fa-solid fa-glasses"></i> Engineer</p>
           </div>
           <div class="card-body">
               <ul class="list-group">
@@ -67,7 +67,7 @@ const generateTeam = (team) => {
       </div>`;
     }
     
-    const generateIntern = (intern) => {
+    generateIntern = (intern) => {
         return `
         <div class="col">
         <div class="card h-400">
@@ -101,20 +101,35 @@ const generateTeam = (team) => {
       </div>`;
     }
 
-    if (data.role === 'Manager') {
-        $('.card-container').append(generateManager());
-    }
-    if (data.role === 'Engineer') {
-        $('.card-container').append(generateEngineer());
-    }
-    if (data.role === 'Intern') {
-        $('.card-container').append(generateIntern());
-    }
+    // const to push employee content
+    const html = [];
+
+    html.push(
+        team
+          .filter((employee) => employee.getRole() === "Manager")
+          .map((manager) => generateManager(manager))
+      );
+      html.push(
+        team
+          .filter((employee) => employee.getRole() === "Engineer")
+          .map((engineer) => generateEngineer(engineer))
+          .join("")
+      );
+      html.push(
+        team
+          .filter((employee) => employee.getRole() === "Intern")
+          .map((intern) => generateIntern(intern))
+          .join("")
+      );
+    
+      return html.join("");
+    
 }
 
-const generatepage = (team) => {
+function generateHTMLpage(team) {
+
     return `
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -123,7 +138,7 @@ const generatepage = (team) => {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./dist/style.css" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Build A Team</title>
   </head>
 
@@ -133,7 +148,7 @@ const generatepage = (team) => {
     </div>
 
     <div class="row row-cols-1 row-cols-md-3 g-4 card-container">
-    ${generateTeam()}
+    ${generateTeam(team)}
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -146,4 +161,4 @@ const generatepage = (team) => {
 </html>`
 }
 
-module.exports = generatepage;
+module.exports = generateHTMLpage;
