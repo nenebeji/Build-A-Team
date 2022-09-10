@@ -5,15 +5,15 @@ describe ('Employee', () => {
         it('should return an object when called with the "new" "keyword"', () => {
             const employee = new Employee();
         
-            expect(typeof(employee)).toBe('object');
+            expect(typeof(employee)).toEqual('object');
         });
 
         it('should set "name", "id" and "email" when created', () => {
             const employee = new Employee('Cindy', 224, 'cindy@test.com');
         
-            expect(employee.name).toBe('Cindy');
-            expect(employee.id).toBe(224);
-            expect(employee.email).toBe('cindy@test.com');
+            expect(employee.name).toEqual('Cindy');
+            expect(employee.id).toEqual(224);
+            expect(employee.email).toEqual('cindy@test.com');
         });
     });
 
