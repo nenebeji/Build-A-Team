@@ -41,7 +41,7 @@ describe ('Engineer', () => {
     });
 
     describe('getGithub', () => {
-        it('should return the "email" value when called', () => {
+        it('should return the "github" value when called', () => {
             const engineer = new Engineer('Cindy', 224, 'cindy@test.com', 'cindy24');
 
             expect(engineer.getGithub()).toEqual('cindy24');
