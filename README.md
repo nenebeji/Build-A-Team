@@ -54,7 +54,7 @@ Run $ node index.js and follow the instructions.
 
 ## How to Contribute
 
-1. Clone the repo using $ git clone git@github.com:nenebeji/Build_A_Team
+1. Clone the repo using $ git clone git@github.com:nenebeji/Build-A-Team
 
 2. Create a new branch $ git checkout -b your name 
 
@@ -76,7 +76,7 @@ Email: nenebeji@gmail.com
 
 ## References
 
-https://github.com/nenebeji/Build_A_Team
+https://github.com/nenebeji/Build-A-Team
 
 ### Walkthrough Video
 
