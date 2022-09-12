@@ -84,6 +84,8 @@ https://github.com/nenebeji/Build-A-Team
 
 ### Walkthrough Video
 
+https://drive.google.com/file/d/1BT8z1mEnRm6Zc2BYJBFiq5cR0VHRABCS/view?usp=sharing
+
 ## License
 
 The MIT License
