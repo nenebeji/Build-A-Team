@@ -49,8 +49,10 @@ Run  $ npm install  to install inquirer and jest.
 ## Screenshots
 
 ![App Image](/assets/images/Applicationprompts.png)
+> Application Image
 
 ![Webpage Image](/assets/images/TeamWebpage.png)
+> Webpage Image
 
 ## Usage 
 
