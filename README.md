@@ -1,8 +1,6 @@
 # Build A Team
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A Node.Js command-line application that takes in information about employees in a team and generates a HTML webpage with a summary of this information. It also unit tests for every part of the code.
-
 ## Table of Contents
 
 - [Project Description](#project-description)
